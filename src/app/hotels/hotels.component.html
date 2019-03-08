@@ -1,0 +1,21 @@
+<!-- <h1>Hotelübersicht</h1> -->
+<ul class="hotels" ng-controller="myController">
+  <li *ngFor="let hotel of hotels" class="hotel-container">
+    <img class="hotel-image" [src]='hotel.image'>
+    <div class="hotel-container-details">
+      <h3>
+        <a>
+          <span class="hotel-name">{{hotel.name}}</span>
+        </a>
+      </h3>
+      <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
+      <div class="hotel-container-price">
+        <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
+      </div>
+      <div class="hotel-container-category">
+        {{hotel.category}}
+      </div>
+    </div>
+    
+  </li>
+</ul>

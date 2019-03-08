@@ -3,10 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HotelsComponent } from './hotels/hotels.component';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { RatingsComponent } from './ratings/ratings.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HotelsComponent,
+    HotelDetailsComponent,
+    RatingsComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
