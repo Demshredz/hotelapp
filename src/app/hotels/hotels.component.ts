@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 // import { Hotel } from '../hotel';
 import { HOTELS } from '../hotels';
+import { HotelService } from '../hotel.service';
 
 @Component({
   selector: 'app-hotels',
@@ -10,14 +12,18 @@ import { HOTELS } from '../hotels';
 export class HotelsComponent implements OnInit {
 
     hotels = HOTELS;
+    
 
-    counter(i: number) {
-      return new Array(i);
-    }
+    
 
-  constructor() { }
+  constructor(
+    private hotelService: HotelService,
+  ) { }
 
   ngOnInit() {
+  }
+  counter(i: number) {
+    return new Array(i);
   }
 
 }

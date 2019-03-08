@@ -1,6 +1,6 @@
 <!-- <h1>Hotelübersicht</h1> -->
 <ul class="hotels" ng-controller="myController">
-  <li *ngFor="let hotel of hotels" class="hotel-container">
+  <li *ngFor="let hotel of hotels" class="hotel-container" routerLink="/hoteldetails/{{hotel.id}}">
     <img class="hotel-image" [src]='hotel.image'>
     <div class="hotel-container-details">
       <h3>
@@ -16,6 +16,5 @@
         {{hotel.category}}
       </div>
     </div>
-    
   </li>
 </ul>

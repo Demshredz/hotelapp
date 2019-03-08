@@ -10,6 +10,7 @@ export const HOTELS: Hotel[] = [
         category:'Spa, W-Lan, Parkplatz',
         price: 199,
         checked: true,
+        breakfast: 20,
     },
     {
         id:2,
@@ -20,5 +21,7 @@ export const HOTELS: Hotel[] = [
         category:'Spa, W-Lan',
         price: 299,
         checked: false,
+        breakfast: 50,
     },
 ];
+

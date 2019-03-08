@@ -7,4 +7,5 @@ export class Hotel {
     category: string;
     price: number;
     checked: boolean;
+    breakfast: number;
 }

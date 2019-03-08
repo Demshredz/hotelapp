@@ -1,3 +1,72 @@
-<p>
-  hotel-details works!
-</p>
+<ng-container *ngIf="hotel">
+  <div class="hotel-container">
+    <img class="hotel-image" [src]='hotel.image'>
+      <div class="hotel-container-details">
+        <h3>
+          <a>
+            <span class="hotel-name">{{hotel.name}}</span>
+          </a>
+        </h3>
+        <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
+        <div class="hotel-container-price">
+          <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
+        </div>
+        <div class="hotel-container-category">
+          {{hotel.category}}
+        </div>
+      </div>
+    </div>
+    <div class="hotel-details">
+      <h2>Weitere Details zu {{hotel.name}}</h2>
+      <div>
+        <h4>Zimmertyp</h4>
+        <label>
+          <input type="radio" name="roomtype">Einzelzimmer
+        </label>
+        <label>
+          <input type="radio" checked name="roomtype">Doppelzimmer
+        </label>
+      </div>
+      <br>
+      <div>
+        <h4>Frühstück</h4>
+        <label>
+          <input type="radio"
+            checked (click)="setradio('without')"
+            [checked]='true'
+            name="breakfast"
+            [(ngModel)]="breakfast"
+            value="ohne">
+          Ohne Frühstück
+        </label>
+        <label>
+          <input type="radio"
+            (click)="setradio('with')"
+            name="breakfast"
+            [(ngModel)]="breakfast"
+            value="mit">
+          Mit Frühstück (+20€)
+        </label>
+      </div>
+      <br>
+      <div>
+        <h4>Anzahl der Übernachtungen:</h4>
+        <input type="number" value=1 name="anzahl-uebernachtungen" [(ngModel)]="quantity">
+        <br>
+        <span>(Preis pro Nacht: {{hotel.price}}€)</span>
+      </div>
+      <br>
+      <h4 class="total">Gesamtpreis = 
+        <div *ngIf="isSelected('without')">
+          <u>{{quantity * hotel.price | currency:'€'}}</u>
+        </div>
+        <div *ngIf="isSelected('with')">
+          <u>{{(quantity * hotel.price) + (20 * quantity) | currency:'€'}}</u>
+        </div>
+      </h4>
+      
+        <br>
+        <button (click)="goBack()">Zurück zur Übersicht</button>
+        
+    </div>
+  </ng-container>
