@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { FormControl, FormGroup } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,8 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { CategoryComponent } from './category/category.component';
+import { MessagesComponent } from './messages/messages.component';
+
 
 
 @NgModule({
@@ -17,12 +19,14 @@ import { CategoryComponent } from './category/category.component';
     HotelsComponent,
     HotelDetailsComponent,
     RatingsComponent,
-    CategoryComponent
+    CategoryComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     // FormControl,
     // FormGroup
   ],

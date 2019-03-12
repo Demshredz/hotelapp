@@ -8,4 +8,5 @@ export class Hotel {
     price: number;
     checked: boolean;
     breakfast: number;
+    singleroom: number;
 }

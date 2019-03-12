@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { HOTELS } from '../hotels'
 import { Hotel } from '../hotel';
 import { HotelService } from '../hotel.service';
+import { FormControl } from '@angular/forms';
+// import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-hotel-details',
@@ -27,21 +29,17 @@ export class HotelDetailsComponent implements OnInit {
     const name = +this.route.snapshot.paramMap.get('name');
     this.hotelService.getHotel(name).subscribe(hotel => this.hotel = hotel);
   }
+
   counter(i: number) {
     return new Array(i);
   }
+
   goBack(): void {
     this.location.back();
   }
-  setradio(e: string): void {
-    this.selectedBreakfast = e;
-  }
-  private selectedBreakfast: string="breakfast";
-  isSelected(name: string): boolean {
-    if (!this.selectedBreakfast) {
-      return false;
-    } return (this.selectedBreakfast === name);
-  }
+
+  roomtype = new FormControl('');
+  breakfast = new FormControl('');
 
 
 }

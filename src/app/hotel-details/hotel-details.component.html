@@ -1,4 +1,6 @@
 <ng-container *ngIf="hotel">
+    <button (click)="goBack()">Zurück zur Übersicht</button>
+    <br><br>
   <div class="hotel-container">
     <img class="hotel-image" [src]='hotel.image'>
       <div class="hotel-container-details">
@@ -21,10 +23,10 @@
       <div>
         <h4>Zimmertyp</h4>
         <label>
-          <input type="radio" name="roomtype">Einzelzimmer
+          <input type="radio" [formControl]="roomtype" value="{{hotel.singleroom}}" name="roomtype">Einzelzimmer(-25€)
         </label>
         <label>
-          <input type="radio" checked name="roomtype">Doppelzimmer
+          <input type="radio" [formControl]="roomtype" value="0" name="roomtype" [checked]="true">Doppelzimmer
         </label>
       </div>
       <br>
@@ -32,41 +34,35 @@
         <h4>Frühstück</h4>
         <label>
           <input type="radio"
-            checked (click)="setradio('without')"
-            [checked]='true'
+            [checked]="true"
+            [formControl]="breakfast"
             name="breakfast"
-            [(ngModel)]="breakfast"
-            value="ohne">
+            value="0">
           Ohne Frühstück
         </label>
         <label>
           <input type="radio"
-            (click)="setradio('with')"
+            [formControl]="breakfast"
             name="breakfast"
-            [(ngModel)]="breakfast"
-            value="mit">
+            value="{{hotel.breakfast}}">
           Mit Frühstück (+20€)
         </label>
       </div>
       <br>
       <div>
         <h4>Anzahl der Übernachtungen:</h4>
-        <input type="number" value=1 name="anzahl-uebernachtungen" [(ngModel)]="quantity">
+        <input type="number"
+          value=1
+          name="anzahl-uebernachtungen"
+          [(ngModel)]="quantity">
         <br>
         <span>(Preis pro Nacht: {{hotel.price}}€)</span>
       </div>
       <br>
       <h4 class="total">Gesamtpreis = 
-        <div *ngIf="isSelected('without')">
-          <u>{{quantity * hotel.price | currency:'€'}}</u>
-        </div>
-        <div *ngIf="isSelected('with')">
-          <u>{{(quantity * hotel.price) + (20 * quantity) | currency:'€'}}</u>
-        </div>
+          <u>{{(quantity * hotel.price) + (breakfast.value * quantity) - (roomtype.value * quantity) | currency:'€'}}</u> für {{quantity}} Nächte
       </h4>
-      
-        <br>
-        <button (click)="goBack()">Zurück zur Übersicht</button>
         
     </div>
   </ng-container>
+  <app-ratings></app-ratings>
