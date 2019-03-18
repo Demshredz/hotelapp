@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { RATINGS } from './ratings';
 import { Rating } from './rating';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,38 +14,24 @@ import { ActivatedRoute } from '@angular/router';
 
 
 export class RatingsComponent implements OnInit {
-  
+  // @ViewChild('f') ratingForm: NgForm; 
   ratings = RATINGS;
-  rating: Rating;
-  userRating = new Rating(1, '', '', 1);
-  addRatingInput() {
-    
-  }
-  // getId(): void {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   console.log(id);
-  // }
-  id: number;
-  private sub: any
-  
-  addNewRating() {
-    this.userRating = new Rating(1, this.userRating.name, this.userRating.text, 1);
-  }
-  submitted = false
-  onSubmit() { this.submitted = true; }
 
+  
+  submitted = false;
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+    this.submitted = true;
+    // f.reset();
+  }
+  
   constructor(
     private route: ActivatedRoute,
     private location: Location
   ) { }
 
-    getHotelRating(): void {
-      
-    }
-
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
+
   }
 
 }

@@ -1,6 +1,36 @@
 <div class="hotel-category-container" ng-controller="myController">
-  <span><b>Filtern nach:</b></span>
+  <span>
+    <b>Filtern nach:</b>
+  </span>
   <hr>
-  <span *ngFor="let hotel of hotels">{{hotel.category}}</span>
-  <input type="checkbox" id="">
-</div>
+    <!-- <input type="text" [(ngModel)]="filteredStatus" value="test"> -->
+    <input type="text" [(ngModel)]="filterString" value="{{testFilter}}">
+    <!-- <input type="checkbox" [(ngModel)]="filterString" value="h" (change)="checkValue(filterString? 'M' : 'H')">Spa -->
+    <!-- <input type="checkbox" [formcontrol]="testFilter" name="testFilter" value="spa">Spa -->
+    <!-- <input type="checkbox" [formControl]="rememberLoginControl"> -->
+    <!-- <input type="checkbox" name="product" value="Hamburg" #Hamburg (change)="onCheck(Hamburg.value)">
+
+    <input type="checkbox" name="product" value="pizza" #pizza (change)="onCheck(pizza.value)"> -->
+  </div>
+
+
+
+      <!-- <li *ngFor="let hotel of hotels | filter:filteredStatus:'category'"> -->
+
+
+
+
+
+
+        <!-- <li *ngFor="let hotel of hotels | filter:filterString">
+      <span
+        class="badge">
+        {{hotel.id}}
+        {{hotel.name}}
+      </span>
+      
+    </li> -->
+
+
+
+    

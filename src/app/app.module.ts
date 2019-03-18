@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { FormControl, FormGroup } from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HotelsComponent } from './hotels/hotels.component';
@@ -10,6 +11,7 @@ import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { CategoryComponent } from './category/category.component';
 import { MessagesComponent } from './messages/messages.component';
+import { FilterPipe } from './category/filter.pipe';
 
 
 
@@ -20,7 +22,8 @@ import { MessagesComponent } from './messages/messages.component';
     HotelDetailsComponent,
     RatingsComponent,
     CategoryComponent,
-    MessagesComponent
+    MessagesComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -1,68 +1,97 @@
 <ng-container *ngIf="hotel">
-    <button (click)="goBack()">Zurück zur Übersicht</button>
-    <br><br>
-  <div class="hotel-container">
-    <img class="hotel-image" [src]='hotel.image'>
-      <div class="hotel-container-details">
-        <h3>
-          <a>
-            <span class="hotel-name">{{hotel.name}}</span>
-          </a>
-        </h3>
-        <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
-        <div class="hotel-container-price">
-          <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <h1>Hoteldetails</h1>
+          <button class="btn btn-success" (click)="goBack()">Zurück zur Übersicht</button>
         </div>
-        <div class="hotel-container-category">
-          {{hotel.category}}
-        </div>
+        <div class="col-md-3"></div>
       </div>
-    </div>
-    <div class="hotel-details">
-      <h2>Weitere Details zu {{hotel.name}}</h2>
-      <div>
-        <h4>Zimmertyp</h4>
-        <label>
-          <input type="radio" [formControl]="roomtype" value="{{hotel.singleroom}}" name="roomtype">Einzelzimmer(-25€)
-        </label>
-        <label>
-          <input type="radio" [formControl]="roomtype" value="0" name="roomtype" [checked]="true">Doppelzimmer
-        </label>
-      </div>
-      <br>
-      <div>
-        <h4>Frühstück</h4>
-        <label>
-          <input type="radio"
-            [checked]="true"
-            [formControl]="breakfast"
-            name="breakfast"
-            value="0">
-          Ohne Frühstück
-        </label>
-        <label>
-          <input type="radio"
-            [formControl]="breakfast"
-            name="breakfast"
-            value="{{hotel.breakfast}}">
-          Mit Frühstück (+20€)
-        </label>
-      </div>
-      <br>
-      <div>
-        <h4>Anzahl der Übernachtungen:</h4>
-        <input type="number"
-          value=1
-          name="anzahl-uebernachtungen"
-          [(ngModel)]="quantity">
-        <br>
-        <span>(Preis pro Nacht: {{hotel.price}}€)</span>
-      </div>
-      <br>
-      <h4 class="total">Gesamtpreis = 
-          <u>{{(quantity * hotel.price) + (breakfast.value * quantity) - (roomtype.value * quantity) | currency:'€'}}</u> für {{quantity}} Nächte
-      </h4>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="hotel-container">
+          <img class="hotel-image" [src]='hotel.image'>
+            <div class="hotel-container-details">
+              <h3>
+                <a>
+                  <span class="hotel-name">{{hotel.name}}</span>
+                </a>
+              </h3>
+              <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
+                <div class="hotel-container-price">
+                  <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
+          
+                </div>
+                <div class="hotel-container-category">
+            {{hotel.category}}
+          </div>
+              </div>
+              </div>
+            </div>
+            <div class="col-md-2"><app-ratings></app-ratings></div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <div class="hotel-details">
+              <h2>Weitere Details zu {{hotel.name}}</h2>
+              <div>
+                <h4>Zimmertyp:</h4>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <label>
+                    <input class="form-check-input" type="radio" [formControl]="roomtype" value="{{hotel.singleroom}}" name="roomtype"> Einzelzimmer(-25€)
+          
+                    </label>
+                    <br>
+                      <label>
+                        <input class="form-check-input" type="radio" [formControl]="roomtype" value="0" name="roomtype" [checked]="true"> Doppelzimmer
+          
+                        </label>
+                      </div>
+                    </div>
+                    <br>
+                      <div>
+                        <h4>Frühstück</h4>
+                        <label>
+                          <input type="radio"
+              [checked]="true"
+              [formControl]="breakfast"
+              name="breakfast"
+              value="0">
+            Ohne Frühstück
+          
+                          </label>
+                          <br>
+                            <label>
+                              <input type="radio"
+              [formControl]="breakfast"
+              name="breakfast"
+              value="{{hotel.breakfast}}">
+            Mit Frühstück (+20€)
+          
+                              </label>
+                            </div>
+                            <br>
+                              <div>
+                                <h4>Anzahl der Übernachtungen:</h4>
+                                <input type="number"
+            value=1
+            name="anzahl-uebernachtungen"
+            [(ngModel)]="quantity">
+                                  <br>
+                                    <span>(Preis pro Nacht: {{hotel.price}}€)</span>
+                                  </div>
+                                  <br>
+                                    <h4 class="total">Gesamtpreis = 
+            
+                                      <u>{{(quantity * hotel.price) + (breakfast.value * quantity) - (roomtype.value * quantity) | currency:'€'}}</u> für {{quantity}} Nächte
         
-    </div>
-  </ng-container>
-  <app-ratings></app-ratings>
+                                    </h4>
+                                  </div>
+                                </div>
+                                  <div class="col-md-3"></div>
+                                </div>
+                              
+                            </ng-container>

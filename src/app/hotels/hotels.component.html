@@ -1,21 +1,65 @@
-<!-- <h1>Hotelübersicht</h1> -->
-<ul class="hotels" ng-controller="myController">
-  <li *ngFor="let hotel of hotels" class="hotel-container" routerLink="/hoteldetails/{{hotel.id}}">
-    <img class="hotel-image" [src]='hotel.image'>
-    <div class="hotel-container-details">
-      <h3>
-        <a>
-          <span class="hotel-name">{{hotel.name}}</span>
-        </a>
-      </h3>
-      <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
-      <div class="hotel-container-price">
-        <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
-      </div>
-      <div class="hotel-container-category">
-        {{hotel.category}}
-      </div>
+<div class="row">
+    <div class="col-md-3">
+
     </div>
-  </li>
-</ul>
-<app-category></app-category>
+    <div class="col-md-6">
+      <h1>Hotelübersicht</h1>
+    </div>
+    
+    <div class="col-md-3">
+<!-- <input type="text" [(ngModel)]="filterString"> -->
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-6">
+    <ul class="hotels" ng-controller="myController">
+      <li *ngFor="let hotel of hotels | filter:filterString:'category'" class="hotel-container" routerLink="/hoteldetails/{{hotel.id}}">
+        <img class="hotel-image" [src]='hotel.image'>
+          <div class="hotel-container-details">
+            <h3>
+              <a>
+                <span class="hotel-name">{{hotel.name}}</span>
+              </a>
+            </h3>
+            <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
+              <div class="hotel-container-price">
+                <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
+      
+              </div>
+              <div class="hotel-container-category">
+                {{hotel.category}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="col-md-6">
+        <ul class="hotels" ng-controller="myController">
+          <li *ngFor="let hotel of hotels | filter:filteredStatus:'category'" class="hotel-container" routerLink="/hoteldetails/{{hotel.id}}">
+            <img class="hotel-image" [src]='hotel.image'>
+              <div class="hotel-container-details">
+                <h3>
+                  <a>
+                    <span class="hotel-name">{{hotel.name}}</span>
+                  </a>
+                </h3>
+                <img *ngFor="let stars of counter(hotel.stars)" class="star-img" [src]='hotel.starImg'>
+                  <div class="hotel-container-price">
+                    <span class="hotel-price-big">{{hotel.price}}€</span> pro Nacht
+          
+                  </div>
+                  <div class="hotel-container-category">
+                    {{hotel.category}}
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div> -->
+      <div class="col-md-3">
+        <app-category></app-category>
+    </div>
+  
+</div>

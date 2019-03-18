@@ -1,12 +1,14 @@
 export class Hotel {
-    id: number;
-    name: string;
-    stars: number;
-    starImg: string;
-    image: string;
-    category: string;
-    price: number;
-    checked: boolean;
-    breakfast: number;
-    singleroom: number;
+    constructor(
+        public id: number,
+        public name: string,
+        public stars: number,
+        public starImg: string,
+        public image: string,
+        public category: string,
+        public price: number,
+        public checked: boolean,
+        public breakfast: number,
+        public singleroom: number,
+    ) {}
 }

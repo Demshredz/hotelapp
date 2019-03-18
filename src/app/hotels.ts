@@ -25,4 +25,16 @@ export const HOTELS: Hotel[] = [
         breakfast: 50,
         singleroom: 35,
     },
+    {
+        id:3,
+        name:'Hotel Hamburg',
+        stars:5,
+        starImg:'assets/img/star.png',
+        image:'assets/img/hotel2.jpg',
+        category:'Spa',
+        price: 299,
+        checked: false,
+        breakfast: 50,
+        singleroom: 35,
+    },
 ];

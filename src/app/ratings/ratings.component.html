@@ -1,42 +1,71 @@
 
-<div class="rating-container">
-    <h2><u>Hotelbewertungen</u></h2>
-  <div *ngFor="let rating of ratings" class="rating-single-container">
-    <p><b>{{rating.name}}</b></p>
-    <p>{{rating.text}}</p>
-  </div>
-  <div [hidden]="!submitted" class="submitted-rating">
-      <h2>Du hast das Hotel erfolgreich bewertet:</h2>
-      <p><b>Name:</b></p>
-      <p>{{ userRating.name }}</p>
-      <p><b>Text:</b></p>
-      <p>{{ userRating.text }}</p>
-      <!-- <button class="btn btn-primary" (click)="submitted=false">Bewertung bearbeiten</button> -->
-    </div>
-  <h3>Neue Hotelbewertung verfassen</h3>
-  <div class="">
-    <form (ngSubmit)="onSubmit()" #ratingForm="ngForm">
-      <div class="form-group">
-        <label for="name"><p>Name:</p></label>
-        <input type="text" class="form-control" id="name"
-          required
-          [(ngModel)]="userRating.name"
-          name="name"
-          #name="ngModel">
-      </div>
+
+<div class="row">
+    <div class="rating-container">
+      <h3>Neue Hotelbewertung verfassen</h3>
+      <div class="">
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="form-group"
+          id="user-data"
+          ngModelGroup="userData"
+          #userData="ngModelGroup">
+            <label for="name">
+              <p>Name:</p>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              ngModel
+              #name="ngModel"
+              required>
+              <span *ngIf="!name.valid && name.touched">Bitte gib einen Namen ein!</span>
+            </div>
+            <label for="text">
+              <p>Text:</p>
+            </label>
+            <input
+            type="text"
+            class="form-control"
+            id="text"
+            name="text"
+            ngModel
+            #text="ngModel"
+            required>
+            <span *ngIf="!text.valid && text.touched">Bitte gib einen Text ein!<br></span>
+            <br>
+              <button
+                class="btn btn-success"
+                type="submit"
+                [disabled]="!f.valid">
+                Bewertung jetzt abgeben</button>
+            </form>
+            </div>
+            <h3>Das sagen unsere Gäste</h3>
+            <div *ngFor="let rating of ratings" class="rating-single-container">
+              <p>{{rating.text}}</p>
+              <p>
+                <b>- {{rating.name}}</b>
+              </p>
+            </div>
+
+
+              <br>
+              <div *ngIf="submitted">
+              <h3>Du hast das Hotel erfolgreich bewertet:</h3>
+              <div class="rating-single-container">
+                <p>{{text.value}}</p>
+                <p>
+                  <b>- {{name.value}}</b>
+                </p>
+              </div>
+            </div>
+
+
+
+          </div>
+          <br>
+          </div>
   
-      <div class="form-group">
-        <label for="text"><p>Text:</p></label>
-        <input type="text" class="form-control" id="text"
-          required
-          [(ngModel)]="userRating.text" name="text"
-          #text="ngModel">
-      </div>
-      <br>
-      <button type="submit" (click)="addNewRating()">Bewertung jetzt abgeben</button>
-    </form>
-  </div>
-</div>
-<br>
-
-
+  
